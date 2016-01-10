@@ -1,0 +1,34 @@
+{
+  "name": "ui-menu",
+  "version": "1.0.0",
+  "description": "ui-router state driven menu directive",
+  "dependencies": {},
+  "devDependencies": {
+    "coffee-coverage": "^0.7.0",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.19",
+    "karma-coffee-coverage": "^1.1.1",
+    "karma-coffee-preprocessor": "^0.3.0",
+    "karma-coverage": "^0.5.3",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.3",
+    "phantomjs": "^1.9.19"
+  },
+  "scripts": {
+    "test": "karma start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Oziabr/ui-menu.git"
+  },
+  "keywords": [
+    "menu",
+    "ui-router"
+  ],
+  "author": "Yury Tvardovsky <oziabr@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Oziabr/ui-menu/issues"
+  },
+  "homepage": "https://github.com/Oziabr/ui-menu#readme"
+}
