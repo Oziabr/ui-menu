@@ -15,7 +15,8 @@
     "phantomjs": "^1.9.19"
   },
   "scripts": {
-    "test": "karma start"
+    "test": "karma start",
+    "build": "coffee -bmc ui-menu.coffee example.coffee"
   },
   "repository": {
     "type": "git",

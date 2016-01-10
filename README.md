@@ -16,6 +16,10 @@ http://htmlpreview.github.io/?https://github.com/Oziabr/ui-menu/blob/master/exam
 
 ```wget https://raw.githubusercontent.com/Oziabr/ui-menu/master/ui-menu.js```
 
+## Build
+
+```npm run-script build```
+
 ## Usage
 
 Check example https://github.com/Oziabr/ui-menu/blob/master/example.coffee
