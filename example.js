@@ -6,7 +6,7 @@ angular.module('ExampleApp', ['ng', 'ui.router', 'ui-menu']).run(function($log, 
   $urlRouterProvider.otherwise('/');
   return $stateProvider.state('app', {
     abstract: true,
-    template: '<div class=\'container\'>\n  <div class=\'jumbotron hero hero-unit\'>\n    <h1>ui-menu demo</h1>\n  </div>\n  <div class=\'row\'>\n    <div class=\'col-sm-3 sidenav\'>\n      <h2>Navigation</h2>\n      <hr/>\n      <ul class="nav nav-pills nav-stacked" uimenu=\'\'></ul>\n      <hr/>\n      <ul class="nav nav-pills nav-stacked" uimenu=\'\' parent=\'app.examples\'></ul>\n    </div>\n    <div class=\'col-sm-9\' ui-view=\'\'></div>\n  </div>\n</div>',
+    template: '<div class=\'container\'>\n  <div class=\'jumbotron hero hero-unit\'>\n    <h1>ui-menu demo\n      <a href=\'https://github.com/Oziabr/ui-menu\'><i class=\'pull-right fa fa-github\'></i></a>\n    </h1>\n  </div>\n  <div class=\'row\'>\n    <div class=\'col-sm-3 sidenav\'>\n      <h2>Navigation</h2>\n      <hr/>\n      <ul class="nav nav-pills nav-stacked" uimenu=\'\'></ul>\n      <hr/>\n      <ul class="nav nav-pills nav-stacked" uimenu=\'\' parent=\'app.examples\'></ul>\n    </div>\n    <div class=\'col-sm-9\' ui-view=\'\'></div>\n  </div>\n</div>',
     controller: function($scope) {}
   }).state('app.examples', {
     'ui-menu': {

@@ -16,7 +16,9 @@ angular.module 'ExampleApp', [
       template: '''
         <div class='container'>
           <div class='jumbotron hero hero-unit'>
-            <h1>ui-menu demo</h1>
+            <h1>ui-menu demo
+              <a href='https://github.com/Oziabr/ui-menu'><i class='pull-right fa fa-github'></i></a>
+            </h1>
           </div>
           <div class='row'>
             <div class='col-sm-3 sidenav'>
