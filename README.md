@@ -1,14 +1,45 @@
 # ui-router state driven menu directive
 
-Also made to be a starting point for BDD module development. With CoffeeScript and coverage reports.
+Also made to be a starting point for BDD module development.
+
+With CoffeeScript and coverage reports.
+
+And some other stuff which made code more humane.
 
 ## Demo
 
 http://htmlpreview.github.io/?https://github.com/Oziabr/ui-menu/blob/master/example.html
 
+## Features
+
+#### As Menu Directive (end-users)
+
+- Setup from ui-router states
+- One project-wise recursive navigation menu
+- Flat inner-page menus
+- Ordering
+- Icons (FontAwesome)
+- [TODO] Default tab pre-select
+- [TODO] Collapsible navigation
+- [TODO] Fix ui-sref-active on navigation
+- [TODO] Flexible templates
+- [TODO] Handling abstract states
+
+#### As Module Boilerplate (dev)
+
+- Coffee!!! (full support)
+- Integrated BDD
+- Coverage reports
+- Stubs for service and directive[TODO] tests
+- Live demo
+- [TODO] Live usage info
+- Basic build system
+- [TODO] Build system (annotation, minification)
+- [TODO] Autoreload
+
 ## Dependencies
 
-- lodash
+- lodash (just because)
 - angular
 - angular-ui-router
 
