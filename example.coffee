@@ -24,9 +24,8 @@ angular.module 'ExampleApp', [
             <div class='col-sm-3 sidenav'>
               <h2>Navigation</h2>
               <hr/>
-              <ul class="nav nav-pills nav-stacked" uimenu=''></ul>
+              <ui-nav-menu></ui-nav-menu>
               <hr/>
-              <ul class="nav nav-pills nav-stacked" uimenu='' parent='app.examples'></ul>
             </div>
             <div class='col-sm-9' ui-view=''></div>
           </div>

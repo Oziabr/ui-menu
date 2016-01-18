@@ -54,6 +54,55 @@ angular.module('ui-menu', ['ng', 'ui.router']).service('$uiMenu', function($stat
       return ($compile(element.contents()))(scope);
     }
   };
+}).directive('uiNavMenu', function($uiMenu) {
+  return {
+    restrict: 'EA',
+    template: '<ul class="nav nav-pills nav-stacked">\n  <li ui-sref-active=\'active\' ng-repeat=\'item in menu\' ui-nav-menu-item></li>\n</ul>',
+    controller: function($scope) {
+      this.navState = [];
+      return this.prop = 'some';
+    },
+    link: function(scope) {
+      scope.menu = $uiMenu.get('nav', '');
+      scope.depth = 0;
+    }
+  };
+}).directive('uiNavSubMenu', function($uiMenu) {
+  return {
+    restrict: 'EA',
+    scope: {
+      parent: '='
+    },
+    template: '<li ui-sref-active=\'active\' ng-repeat=\'item in menu\' ui-nav-menu-item>{{item.title}}</li>',
+    link: function(scope) {
+      scope.depth = 1 + scope.$parent.$parent.depth;
+      scope.menu = $uiMenu.get('nav', scope.parent);
+    }
+  };
+}).directive('uiNavMenuItem', function($uiMenu, $compile, $state) {
+  return {
+    restrict: 'EA',
+    require: '^uiNavMenu',
+    template: '<a title=\'{{item.title}}\'>\n  <i ng-if=\'item.icon\' class=\'fa fa-lg fa-fw fa-{{item.icon}}\'></i>\n  <span>{{item.title}}</span>\n</a>',
+    link: function(scope, element, attrs, uiNavMenu) {
+      if ($state.includes(scope.item.route)) {
+        uiNavMenu.navState[scope.$parent.depth] = scope.item.route;
+      }
+      if (scope.item.children.length) {
+        element.find('a').append('<b class=\'pull-right\'>\n  <em class=\'fa fa-plus-square-o\' ng-if=\'navState[$parent.depth] != item.route\'></em>\n  <em class=\'fa fa-minus-square-o\' ng-if=\'navState[$parent.depth] == item.route\'></em>\n</b>').attr({
+          'ng-click': 'navState[$parent.depth] = item.route'
+        });
+        element.append('<ul ui-nav-sub-menu class="nav nav-pills nav-stacked"\nuib-collapse=\'navState[$parent.depth] != item.route\' parent=\'item.route\'></ul>');
+        element.parent().addClass('active');
+      } else {
+        element.find('a').attr({
+          'ui-sref': scope.item.route
+        });
+      }
+      ($compile(element.contents()))(scope);
+      scope.navState = uiNavMenu.navState;
+    }
+  };
 });
 
 //# sourceMappingURL=ui-menu.js.map
