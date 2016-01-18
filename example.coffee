@@ -79,35 +79,33 @@ angular.module 'ExampleApp', [
       url: '/details'
       template: '''<h1>Some Content</h1><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>'''
 
-    .state 'app.nested0',
+    .state 'app.nest',
       'ui-menu':
         title: 'Nested L0'
         tag: 'nav'
       abstract: true
       url: '/l0'
-    .state 'app.nested1',
+    .state 'app.nest.nest',
       'ui-menu':
         title: 'Nested L1'
         tag: 'nav'
-        parent: 'app.nested0'
+        parent: 'app.nest'
       abstract: true
       url: '/l1'
-    .state 'app.nested2',
+    .state 'app.nest.nest.nest',
       'ui-menu':
         title: 'Nested L2'
         tag: 'nav'
-        parent: 'app.nested1'
+        parent: 'app.nest.nest'
       abstract: true
       url: '/l2'
-    .state 'app.nested3',
+    .state 'app.nest.nest.nest.nest',
       'ui-menu':
         title: 'Nested L3'
         tag: 'nav'
-        parent: 'app.nested2'
+        parent: 'app.nest.nest.nest'
       url: '/l3'
       template: '''<h1>Some Content</h1><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>'''
-
-
 
     .state 'app.examples.coffee',
       'ui-menu':
