@@ -1,5 +1,7 @@
 angular.module 'ExampleApp', [
   'ng'
+  'ngAnimate'
+  'ui.bootstrap'
   'ui.router'
   'ui-menu'
 ]

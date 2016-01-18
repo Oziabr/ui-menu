@@ -42,6 +42,9 @@ http://htmlpreview.github.io/?https://github.com/Oziabr/ui-menu/blob/master/exam
 - lodash (just because)
 - angular
 - angular-ui-router
+- angular-animate (collapsible navigation)
+- ui-bootstrap    (collapsible navigation)
+
 
 ## Install
 
