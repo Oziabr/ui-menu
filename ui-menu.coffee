@@ -48,11 +48,7 @@ angular.module 'ui-menu', [
   '''
   # controller: ($scope) ->
   link: (scope, element, attrs) ->
-    if scope.item.children.length && scope.item.tag == 'nav'
-      element.find('a').append '''<b class='pull-right'><em class='fa fa-plus-square-o'></em></b>'''
-      element.append '''<ul class="nav" uimenu='' parent='{{item.route}}'></ul>'''
-    else
-      element.find('a').attr 'ui-sref': scope.item.route
+    element.find('a').attr 'ui-sref': scope.item.route
     ($compile element.contents())(scope)
 
 

@@ -43,14 +43,9 @@ angular.module('ui-menu', ['ng', 'ui.router']).service('$uiMenu', function($stat
     restrict: 'EA',
     template: '<a title=\'{{item.title}}\'>\n  <i ng-if=\'item.icon\' class=\'fa fa-lg fa-fw fa-{{item.icon}}\'></i>\n  <span>{{item.title}}</span>\n</a>',
     link: function(scope, element, attrs) {
-      if (scope.item.children.length && scope.item.tag === 'nav') {
-        element.find('a').append('<b class=\'pull-right\'><em class=\'fa fa-plus-square-o\'></em></b>');
-        element.append('<ul class="nav" uimenu=\'\' parent=\'{{item.route}}\'></ul>');
-      } else {
-        element.find('a').attr({
-          'ui-sref': scope.item.route
-        });
-      }
+      element.find('a').attr({
+        'ui-sref': scope.item.route
+      });
       return ($compile(element.contents()))(scope);
     }
   };
