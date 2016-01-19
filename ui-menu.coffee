@@ -61,7 +61,7 @@ angular.module 'ui-menu', [
   '''
   controller: ($scope) ->
     @.navState = []
-    @.prop = 'some'
+    @
   link: (scope) ->
     scope.menu = $uiMenu.get 'nav', ''
     scope.depth = 0
@@ -88,16 +88,24 @@ angular.module 'ui-menu', [
       <span>{{item.title}}</span>
     </a>
   '''
+  controller: ($scope) ->
+    $scope.toggle = ->
+      depth = $scope.$parent.depth
+      route = $scope.item.route
+      if $scope.navState[depth] != route
+        return $scope.navState[depth] = route
+      $scope.navState[depth] = ''
   link: (scope, element, attrs, uiNavMenu) ->
-    uiNavMenu.navState[scope.$parent.depth] = scope.item.route if $state.includes scope.item.route
+    scope.navState = uiNavMenu.navState
+    scope.navState[scope.$parent.depth] = scope.item.route if $state.includes scope.item.route
     if scope.item.children.length
       element.find('a')
         .append '''
           <b class='pull-right'>
-            <em class='fa fa-plus-square-o' ng-if='navState[$parent.depth] != item.route'></em>
+            <em class='fa  fa-plus-square-o' ng-if='navState[$parent.depth] != item.route'></em>
             <em class='fa fa-minus-square-o' ng-if='navState[$parent.depth] == item.route'></em>
           </b>'''
-        .attr 'ng-click': 'navState[$parent.depth] = item.route'
+        .attr 'ng-click': 'toggle()'
       element.append '''<ul ui-nav-sub-menu class="nav nav-pills nav-stacked"
         uib-collapse='navState[$parent.depth] != item.route' parent='item.route'></ul>'''
       element.parent().addClass 'active'

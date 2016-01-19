@@ -55,7 +55,7 @@ angular.module('ui-menu', ['ng', 'ui.router']).service('$uiMenu', function($stat
     template: '<ul class="nav nav-pills nav-stacked">\n  <li ui-sref-active=\'active\' ng-repeat=\'item in menu\' ui-nav-menu-item></li>\n</ul>',
     controller: function($scope) {
       this.navState = [];
-      return this.prop = 'some';
+      return this;
     },
     link: function(scope) {
       scope.menu = $uiMenu.get('nav', '');
@@ -79,13 +79,25 @@ angular.module('ui-menu', ['ng', 'ui.router']).service('$uiMenu', function($stat
     restrict: 'EA',
     require: '^uiNavMenu',
     template: '<a title=\'{{item.title}}\'>\n  <i ng-if=\'item.icon\' class=\'fa fa-lg fa-fw fa-{{item.icon}}\'></i>\n  <span>{{item.title}}</span>\n</a>',
+    controller: function($scope) {
+      return $scope.toggle = function() {
+        var depth, route;
+        depth = $scope.$parent.depth;
+        route = $scope.item.route;
+        if ($scope.navState[depth] !== route) {
+          return $scope.navState[depth] = route;
+        }
+        return $scope.navState[depth] = '';
+      };
+    },
     link: function(scope, element, attrs, uiNavMenu) {
+      scope.navState = uiNavMenu.navState;
       if ($state.includes(scope.item.route)) {
-        uiNavMenu.navState[scope.$parent.depth] = scope.item.route;
+        scope.navState[scope.$parent.depth] = scope.item.route;
       }
       if (scope.item.children.length) {
-        element.find('a').append('<b class=\'pull-right\'>\n  <em class=\'fa fa-plus-square-o\' ng-if=\'navState[$parent.depth] != item.route\'></em>\n  <em class=\'fa fa-minus-square-o\' ng-if=\'navState[$parent.depth] == item.route\'></em>\n</b>').attr({
-          'ng-click': 'navState[$parent.depth] = item.route'
+        element.find('a').append('<b class=\'pull-right\'>\n  <em class=\'fa  fa-plus-square-o\' ng-if=\'navState[$parent.depth] != item.route\'></em>\n  <em class=\'fa fa-minus-square-o\' ng-if=\'navState[$parent.depth] == item.route\'></em>\n</b>').attr({
+          'ng-click': 'toggle()'
         });
         element.append('<ul ui-nav-sub-menu class="nav nav-pills nav-stacked"\nuib-collapse=\'navState[$parent.depth] != item.route\' parent=\'item.route\'></ul>');
         element.parent().addClass('active');
