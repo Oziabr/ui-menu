@@ -54,6 +54,7 @@ angular.module('ExampleApp', ['ng', 'ngAnimate', 'ui.bootstrap', 'ui.router', 'u
       title: 'Nested L0'
     },
     abstract: true,
+    template: '<h1>Nested Head L0</h1><div ui-view=\'\'></div>',
     url: '/l0'
   }).state('app.nest.nest', {
     'ui-menu': {
@@ -62,6 +63,7 @@ angular.module('ExampleApp', ['ng', 'ngAnimate', 'ui.bootstrap', 'ui.router', 'u
       parent: 'app.nest'
     },
     abstract: true,
+    template: '<h2>Nested Head L1</h2><div ui-view=\'\'></div>',
     url: '/l1'
   }).state('app.nest.nest.nest', {
     'ui-menu': {
@@ -70,6 +72,7 @@ angular.module('ExampleApp', ['ng', 'ngAnimate', 'ui.bootstrap', 'ui.router', 'u
       parent: 'app.nest.nest'
     },
     abstract: true,
+    template: '<h3>Nested Head L2</h3><div ui-view=\'\'></div>',
     url: '/l2'
   }).state('app.nest.nest.nest.nest', {
     'ui-menu': {
@@ -78,7 +81,7 @@ angular.module('ExampleApp', ['ng', 'ngAnimate', 'ui.bootstrap', 'ui.router', 'u
       parent: 'app.nest.nest.nest'
     },
     url: '/l3',
-    template: '<h1>Some Content</h1><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>'
+    template: '<h4>Nested Head L3</h4><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>'
   }).state('app.examples.coffee', {
     'ui-menu': {
       tag: 'nav',
