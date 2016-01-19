@@ -36,10 +36,7 @@ angular.module 'ExampleApp', [
       controller: ($scope) ->
 
     .state 'app.examples',
-      'ui-menu':
-        title: 'Usage Examples'
-        tag: 'nav'
-        icon: 'code'
+      'ui-menu': tag: 'nav',  icon: 'code', title: 'Usage Examples'
       abstract: true
       url: '/examples'
       template: '''
@@ -47,10 +44,7 @@ angular.module 'ExampleApp', [
       '''
 
     .state 'app.tabs',
-      'ui-menu':
-        title: 'Inner Tabs'
-        icon: 'gift'
-        tag: 'nav'
+      'ui-menu': tag: 'nav',  icon: 'gift', title: 'Inner Tabs'
       url: '/tabs'
       template: '''
         <div class='well'><h1>Inner Tabs</h1></div>
@@ -59,60 +53,35 @@ angular.module 'ExampleApp', [
         <div ui-view=''></div>
       '''
     .state 'app.tabs.info',
-      'ui-menu':
-        title: 'Info Tab'
-        icon: 'info'
-        tag: 'tabs'
-        parent: 'app.tabs'
+      'ui-menu': tag: 'tabs', icon: 'info',      title: 'Info Tab',     parent: 'app.tabs'
       url: '/info'
     .state 'app.tabs.action',
-      'ui-menu':
-        title: 'Action Tab'
-        tag: 'tabs'
-        parent: 'app.tabs'
+      'ui-menu': tag: 'tabs',                    title: 'Action Tab',   parent: 'app.tabs'
       url: '/action'
     .state 'app.tabs.details',
-      'ui-menu':
-        title: 'Details Tab'
-        tag: 'tabs'
-        parent: 'app.tabs'
+      'ui-menu': tag: 'tabs',                    title: 'Details Tab',  parent: 'app.tabs'
       url: '/details'
       template: '''<h1>Some Content</h1><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>'''
 
     .state 'app.nest',
-      'ui-menu':
-        title: 'Nested L0'
-        tag: 'nav'
+      'ui-menu': tag: 'nav',                     title: 'Nested L0'
       abstract: true
       url: '/l0'
     .state 'app.nest.nest',
-      'ui-menu':
-        title: 'Nested L1'
-        tag: 'nav'
-        parent: 'app.nest'
+      'ui-menu': tag: 'nav',                     title: 'Nested L1',    parent: 'app.nest'
       abstract: true
       url: '/l1'
     .state 'app.nest.nest.nest',
-      'ui-menu':
-        title: 'Nested L2'
-        tag: 'nav'
-        parent: 'app.nest.nest'
+      'ui-menu': tag: 'nav',                     title: 'Nested L2',    parent: 'app.nest.nest'
       abstract: true
       url: '/l2'
     .state 'app.nest.nest.nest.nest',
-      'ui-menu':
-        title: 'Nested L3'
-        tag: 'nav'
-        parent: 'app.nest.nest.nest'
+      'ui-menu': tag: 'nav',                     title: 'Nested L3',    parent: 'app.nest.nest.nest'
       url: '/l3'
       template: '''<h1>Some Content</h1><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>'''
 
     .state 'app.examples.coffee',
-      'ui-menu':
-        title: 'CoffeeScript'
-        tag: 'nav'
-        icon: 'coffee'
-        parent: 'app.examples'
+      'ui-menu': tag: 'nav',  icon: 'coffee',    title: 'CoffeeScript', parent: 'app.examples'
       url: '/coffee'
       template: '''
         <h1>CoffeeScript Example</h1>
@@ -120,11 +89,7 @@ angular.module 'ExampleApp', [
         <p>Comming soon, check the code</p>
       '''
     .state 'app.examples.js',
-      'ui-menu':
-        title: 'JavaScript'
-        tag: 'nav'
-        icon: 'file-text'
-        parent: 'app.examples'
+      'ui-menu': tag: 'nav',  icon: 'file-text', title: 'JavaScript',   parent: 'app.examples'
       url: '/js'
       template: '''
         <h1>JavaScript Example</h1>
@@ -133,10 +98,6 @@ angular.module 'ExampleApp', [
       '''
 
     .state 'app.home',
-      'ui-menu':
-        title: 'Home'
-        tag: 'nav'
-        icon: 'home'
-        order: 10
+      'ui-menu': tag: 'nav',  icon: 'home',      title: 'Home',                                   order: 10
       url: '/'
       template: '<h1>Home Page</h1>'
