@@ -105,12 +105,11 @@ angular.module 'ui-menu', [
             <em class='fa  fa-plus-square-o' ng-if='navState[$parent.depth] != item.route'></em>
             <em class='fa fa-minus-square-o' ng-if='navState[$parent.depth] == item.route'></em>
           </b>'''
-        .attr 'ng-click': 'toggle()'
+        .attr 'ng-click': 'toggle($event.preventDefault())'
       element.append '''<ul ui-nav-sub-menu class="nav nav-pills nav-stacked"
         uib-collapse='navState[$parent.depth] != item.route' parent='item.route'></ul>'''
       element.parent().addClass 'active'
-    else
-      element.find('a').attr 'ui-sref': scope.item.route
+    element.find('a').attr 'ui-sref': scope.item.route
     ($compile element.contents())(scope)
     scope.navState = uiNavMenu.navState
     # console.log element.parent()  if scope.item.route == $state.current.name

@@ -97,15 +97,14 @@ angular.module('ui-menu', ['ng', 'ui.router']).service('$uiMenu', function($stat
       }
       if (scope.item.children.length) {
         element.find('a').append('<b class=\'pull-right\'>\n  <em class=\'fa  fa-plus-square-o\' ng-if=\'navState[$parent.depth] != item.route\'></em>\n  <em class=\'fa fa-minus-square-o\' ng-if=\'navState[$parent.depth] == item.route\'></em>\n</b>').attr({
-          'ng-click': 'toggle()'
+          'ng-click': 'toggle($event.preventDefault())'
         });
         element.append('<ul ui-nav-sub-menu class="nav nav-pills nav-stacked"\nuib-collapse=\'navState[$parent.depth] != item.route\' parent=\'item.route\'></ul>');
         element.parent().addClass('active');
-      } else {
-        element.find('a').attr({
-          'ui-sref': scope.item.route
-        });
       }
+      element.find('a').attr({
+        'ui-sref': scope.item.route
+      });
       ($compile(element.contents()))(scope);
       scope.navState = uiNavMenu.navState;
     }
