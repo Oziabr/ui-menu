@@ -15,6 +15,20 @@ angular.module 'ExampleApp', [
   $stateProvider
     .state 'app',
       abstract: true
+      resolve:
+        tabsHandler: ($state) ->
+          # default tabs handler
+          (_ $state.get()).filter('ui-menu': default: true).each (el) ->
+            parent = el['ui-menu'].parent
+            ($state.get parent).controller = ->
+              $state.go el.name if $state.current.name == parent
+            el
+        programmaticalStateExample: ($state) ->
+          # adding state programmatically
+          $stateProvider.state 'app.extra', url: '/extra', 'ui-menu': title: 'Extra Nav', icon: 'plus', tag: 'nav', order: 15
+          # changing state programmatically
+          ($state.get 'app.home')['ui-menu'].title = 'Hause'
+          true
       template: '''
         <div class='container'>
           <div class='jumbotron hero hero-unit'>
@@ -56,7 +70,7 @@ angular.module 'ExampleApp', [
       'ui-menu': tag: 'tabs', icon: 'info',      title: 'Info Tab',     parent: 'app.tabs'
       url: '/info'
     .state 'app.tabs.action',
-      'ui-menu': tag: 'tabs',                    title: 'Action Tab',   parent: 'app.tabs'
+      'ui-menu': tag: 'tabs',                    title: 'Action Tab',   parent: 'app.tabs', default: true
       url: '/action'
     .state 'app.tabs.details',
       'ui-menu': tag: 'tabs',                    title: 'Details Tab',  parent: 'app.tabs'

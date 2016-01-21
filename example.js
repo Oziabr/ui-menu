@@ -6,6 +6,37 @@ angular.module('ExampleApp', ['ng', 'ngAnimate', 'ui.bootstrap', 'ui.router', 'u
   $urlRouterProvider.otherwise('/');
   return $stateProvider.state('app', {
     abstract: true,
+    resolve: {
+      tabsHandler: function($state) {
+        return (_($state.get())).filter({
+          'ui-menu': {
+            "default": true
+          }
+        }).each(function(el) {
+          var parent;
+          parent = el['ui-menu'].parent;
+          ($state.get(parent)).controller = function() {
+            if ($state.current.name === parent) {
+              return $state.go(el.name);
+            }
+          };
+          return el;
+        });
+      },
+      programmaticalStateExample: function($state) {
+        $stateProvider.state('app.extra', {
+          url: '/extra',
+          'ui-menu': {
+            title: 'Extra Nav',
+            icon: 'plus',
+            tag: 'nav',
+            order: 15
+          }
+        });
+        ($state.get('app.home'))['ui-menu'].title = 'Hause';
+        return true;
+      }
+    },
     template: '<div class=\'container\'>\n  <div class=\'jumbotron hero hero-unit\'>\n    <h1>ui-menu demo\n      <a href=\'https://github.com/Oziabr/ui-menu\'><i class=\'pull-right fa fa-github\'></i></a>\n    </h1>\n  </div>\n  <div class=\'row\'>\n    <div class=\'col-sm-3 sidenav\'>\n      <h2>Navigation</h2>\n      <hr/>\n      <ui-nav-menu></ui-nav-menu>\n      <hr/>\n    </div>\n    <div class=\'col-sm-9\' ui-view=\'\'></div>\n  </div>\n</div>',
     controller: function($scope) {}
   }).state('app.examples', {
@@ -37,7 +68,8 @@ angular.module('ExampleApp', ['ng', 'ngAnimate', 'ui.bootstrap', 'ui.router', 'u
     'ui-menu': {
       tag: 'tabs',
       title: 'Action Tab',
-      parent: 'app.tabs'
+      parent: 'app.tabs',
+      "default": true
     },
     url: '/action'
   }).state('app.tabs.details', {
