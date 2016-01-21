@@ -99,6 +99,15 @@ angular.module 'ExampleApp', [
         <hr/>
         <p>Comming soon, check the code</p>
       '''
+    .state 'app.examples.restrictedShown',
+      'ui-menu': tag: 'nav',  icon: 'times',     title: 'Restricted Shown',   parent: 'app.examples'
+      url: '/resticted-shown'
+      controller: ($state) -> $state.go 'app.home'
+    .state 'app.examples.restrictedHidden',
+      'ui-menu': tag: 'nav',  icon: 'times',     title: 'Restricted Hidden',  parent: 'app.examples', restrict: true
+      url: '/resticted-hidden'
+      controller: ($state) -> $state.go 'app.home'
+
 
     .state 'app.home',
       'ui-menu': tag: 'nav',  icon: 'home',      title: 'Home',                                   order: 10

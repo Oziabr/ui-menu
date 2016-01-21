@@ -100,6 +100,29 @@ angular.module('ExampleApp', ['ng', 'ngAnimate', 'ui.bootstrap', 'ui.router', 'u
     },
     url: '/js',
     template: '<h1>JavaScript Example</h1>\n<hr/>\n<p>Comming soon, check the code</p>'
+  }).state('app.examples.restrictedShown', {
+    'ui-menu': {
+      tag: 'nav',
+      icon: 'times',
+      title: 'Restricted Shown',
+      parent: 'app.examples'
+    },
+    url: '/resticted-shown',
+    controller: function($state) {
+      return $state.go('app.home');
+    }
+  }).state('app.examples.restrictedHidden', {
+    'ui-menu': {
+      tag: 'nav',
+      icon: 'times',
+      title: 'Restricted Hidden',
+      parent: 'app.examples',
+      restrict: true
+    },
+    url: '/resticted-hidden',
+    controller: function($state) {
+      return $state.go('app.home');
+    }
   }).state('app.home', {
     'ui-menu': {
       tag: 'nav',

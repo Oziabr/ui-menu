@@ -83,7 +83,7 @@ angular.module 'ui-menu', [
   restrict: 'EA'
   require: '^uiNavMenu'
   template: '''
-    <a title='{{item.title}}'>
+    <a title='{{item.title}}' ng-hide='item.restrict'>
       <i ng-if='item.icon' class='fa fa-lg fa-fw fa-{{item.icon}}'></i>
       <span>{{item.title}}</span>
     </a>

@@ -78,7 +78,7 @@ angular.module('ui-menu', ['ng', 'ui.router']).service('$uiMenu', function($stat
   return {
     restrict: 'EA',
     require: '^uiNavMenu',
-    template: '<a title=\'{{item.title}}\'>\n  <i ng-if=\'item.icon\' class=\'fa fa-lg fa-fw fa-{{item.icon}}\'></i>\n  <span>{{item.title}}</span>\n</a>',
+    template: '<a title=\'{{item.title}}\' ng-hide=\'item.restrict\'>\n  <i ng-if=\'item.icon\' class=\'fa fa-lg fa-fw fa-{{item.icon}}\'></i>\n  <span>{{item.title}}</span>\n</a>',
     controller: function($scope) {
       return $scope.toggle = function() {
         var depth, route;
