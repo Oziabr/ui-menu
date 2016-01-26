@@ -19,9 +19,9 @@ http://htmlpreview.github.io/?https://github.com/Oziabr/ui-menu/blob/master/exam
 - Flat inner-page menus
 - Ordering
 - Icons (FontAwesome)
-- [TODO] Default tab pre-select
-- [TODO] Collapsible navigation
-- [TODO] Fix ui-sref-active on navigation
+- Default tab pre-select
+- Collapsible navigation
+- Fix ui-sref-active on navigation
 - [TODO] Flexible templates
 - [TODO] Handling abstract states
 
