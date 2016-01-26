@@ -8,6 +8,7 @@ module.exports = (config) ->
     ]
 
     files: [
+      'bower_components/jquery/dist/jquery.js'
       'bower_components/lodash/lodash.js'
       'bower_components/angular/angular.js'
       'bower_components/angular-ui-router/release/angular-ui-router.js'
