@@ -44,14 +44,14 @@ angular.module('ui-menu', ['ng', 'ui.router']).service('$uiMenu', function($stat
       route: name
     });
   };
-}).directive('uimenu', function($uiMenu) {
+}).directive('uiMenu', function($uiMenu) {
   return {
     restrict: 'EA',
     scope: {
       tag: '@',
       parent: '@'
     },
-    template: '<li ui-sref-active=\'active\' ng-repeat=\'item in menu\' uimenu-item></li>',
+    template: '<li ui-sref-active=\'active\' ng-repeat=\'item in menu\' ui-menu-item></li>',
     link: function(scope, element, attrs) {
       var parent, tag;
       tag = attrs.tag || 'nav';
@@ -59,7 +59,7 @@ angular.module('ui-menu', ['ng', 'ui.router']).service('$uiMenu', function($stat
       scope.menu = $uiMenu.get(tag, parent);
     }
   };
-}).directive('uimenuItem', function($uiMenu, $compile) {
+}).directive('uiMenuItem', function($uiMenu, $compile) {
   return {
     restrict: 'EA',
     template: '<a title=\'{{item.title}}\'>\n  <i ng-if=\'item.icon\' class=\'fa fa-lg fa-fw fa-{{item.icon}}\'></i>\n  <span>{{item.title}}</span>\n</a>',

@@ -37,13 +37,13 @@ angular.module 'ui-menu', [
     _.find menus, route: name
   return
 
-.directive 'uimenu', ($uiMenu) ->
+.directive 'uiMenu', ($uiMenu) ->
   restrict: 'EA'
   scope:
     tag: '@'
     parent: '@'
   template: '''
-    <li ui-sref-active='active' ng-repeat='item in menu' uimenu-item></li>
+    <li ui-sref-active='active' ng-repeat='item in menu' ui-menu-item></li>
   '''
   # controller: ($scope) ->
   link: (scope, element, attrs) ->
@@ -52,7 +52,7 @@ angular.module 'ui-menu', [
     scope.menu = $uiMenu.get tag, parent
     return
 
-.directive 'uimenuItem', ($uiMenu, $compile) ->
+.directive 'uiMenuItem', ($uiMenu, $compile) ->
   restrict: 'EA'
   # scope:
   #   item: '='

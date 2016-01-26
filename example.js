@@ -39,7 +39,7 @@ angular.module('ExampleApp', ['ng', 'ngAnimate', 'ui.bootstrap', 'ui.router', 'u
       title: 'Inner Tabs'
     },
     url: '/tabs',
-    template: '<div class=\'well\'><h1>Inner Tabs</h1></div>\n<hr/>\n<ul class="nav nav-tabs" uimenu=\'\' parent=\'app.tabs\' tag=\'tab\'></ul>\n<div ui-view=\'\'></div>'
+    template: '<div class=\'well\'><h1>Inner Tabs</h1></div>\n<hr/>\n<ul class="nav nav-tabs" ui-menu=\'\' parent=\'app.tabs\' tag=\'tab\'></ul>\n<div ui-view=\'\'></div>'
   }).state('app.tabs.info', {
     'ui-menu': {
       tag: 'tab',
@@ -51,6 +51,7 @@ angular.module('ExampleApp', ['ng', 'ngAnimate', 'ui.bootstrap', 'ui.router', 'u
   }).state('app.tabs.action', {
     'ui-menu': {
       tag: 'tab',
+      icon: 'bicycle',
       title: 'Action Tab',
       parent: 'app.tabs',
       "default": true
@@ -59,6 +60,7 @@ angular.module('ExampleApp', ['ng', 'ngAnimate', 'ui.bootstrap', 'ui.router', 'u
   }).state('app.tabs.details', {
     'ui-menu': {
       tag: 'tab',
+      icon: 'list',
       title: 'Details Tab',
       parent: 'app.tabs'
     },
