@@ -16,13 +16,6 @@ angular.module 'ExampleApp', [
     .state 'app',
       abstract: true
       resolve:
-        tabsHandler: ($state) ->
-          # default tabs handler
-          (_ $state.get()).filter('ui-menu': default: true).each (el) ->
-            parent = el['ui-menu'].parent
-            ($state.get parent).controller = ->
-              $state.go el.name if $state.current.name == parent
-            el
         programmaticalStateExample: ($state) ->
           # adding state programmatically
           $stateProvider.state 'app.extra', url: '/extra', 'ui-menu': title: 'Extra Nav', icon: 'plus', tag: 'nav', order: 15

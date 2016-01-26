@@ -7,22 +7,6 @@ angular.module('ExampleApp', ['ng', 'ngAnimate', 'ui.bootstrap', 'ui.router', 'u
   return $stateProvider.state('app', {
     abstract: true,
     resolve: {
-      tabsHandler: function($state) {
-        return (_($state.get())).filter({
-          'ui-menu': {
-            "default": true
-          }
-        }).each(function(el) {
-          var parent;
-          parent = el['ui-menu'].parent;
-          ($state.get(parent)).controller = function() {
-            if ($state.current.name === parent) {
-              return $state.go(el.name);
-            }
-          };
-          return el;
-        });
-      },
       programmaticalStateExample: function($state) {
         $stateProvider.state('app.extra', {
           url: '/extra',
