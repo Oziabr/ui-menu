@@ -118,10 +118,8 @@ angular.module 'ExampleApp', [
       url: '/resticted-shown'
       controller: ($state) -> $state.go 'app.home'
     .state 'app.examples.restrictedHidden',
-      'ui-menu': tag: 'nav',  icon: 'times',     title: 'Restricted Hidden',  parent: 'app.examples', restrict: true
+      'ui-menu': tag: 'nav',  icon: 'times',     title: 'Restricted Hidden',  parent: 'app.examples', restricted: true
       url: '/resticted-hidden'
-      controller: ($state) -> $state.go 'app.home'
-
 
     .state 'app.home',
       'ui-menu': tag: 'nav',  icon: 'home',      title: 'Home',                                   order: 10

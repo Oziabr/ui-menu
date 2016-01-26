@@ -149,12 +149,9 @@ angular.module('ExampleApp', ['ng', 'ngAnimate', 'ui.bootstrap', 'ui.router', 'u
       icon: 'times',
       title: 'Restricted Hidden',
       parent: 'app.examples',
-      restrict: true
+      restricted: true
     },
-    url: '/resticted-hidden',
-    controller: function($state) {
-      return $state.go('app.home');
-    }
+    url: '/resticted-hidden'
   }).state('app.home', {
     'ui-menu': {
       tag: 'nav',

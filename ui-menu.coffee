@@ -4,19 +4,35 @@ angular.module 'ui-menu', [
 ]
 
 .service '$uiMenu', ($state) ->
-  menus = undefined
+  menus = []
+  defaultNavItem = false
   @get = (tag, parent) ->
-    menus = _ $state.get()
+    menus[tag] ?= _ $state.get()
       .filter (el) -> el.hasOwnProperty 'ui-menu'
       .map (el) ->
         el['ui-menu'].parent ?= ''
         el['ui-menu'].route = el.name
         el['ui-menu']
       .filter 'tag', tag
-      .each (el, x, group) -> el.children = _.filter group, parent: el.route
+      .each (el, x, group) ->
+        el.children = _.filter group, parent: el.route
+        if el.restricted
+          ($state.get el.route).controller = -> $state.go defaultNavItem
+      .value()
+
+    result = _ menus[tag]
       .filter 'parent', parent
       .sortBy 'order'
       .value()
+
+    if tag != 'nav' && $state.current.name == parent
+       id = _.findIndex result, 'default'
+       id = 0 if !~id
+       $state.go result[id].route
+
+    defaultNavItem = result[0].route  if !defaultNavItem && tag == 'nav' && !parent && result.length
+    result
+
   @find = (name) ->
     _.find menus, route: name
   return
@@ -83,7 +99,7 @@ angular.module 'ui-menu', [
   restrict: 'EA'
   require: '^uiNavMenu'
   template: '''
-    <a title='{{item.title}}' ng-hide='item.restrict'>
+    <a title='{{item.title}}' ng-hide='item.restricted'>
       <i ng-if='item.icon' class='fa fa-lg fa-fw fa-{{item.icon}}'></i>
       <span>{{item.title}}</span>
     </a>
