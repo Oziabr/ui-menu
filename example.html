@@ -8,6 +8,9 @@
   <style>
     /* navigation menu */
     .sidenav .nav .nav {font-size: 12px; padding-left: 32px}
+    /* manual reset for active-expanded navigation items */
+    .nav-pills > li.active > a.expanded {background-color: transparent; color: #337ab7}
+    .nav-pills > li.active > a.expanded:hover {background-color: #eeeeee;}
   </style>
 </head>
 <body ng-app="ExampleApp" ui-view=''>
