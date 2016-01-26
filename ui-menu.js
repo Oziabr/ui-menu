@@ -100,7 +100,6 @@ angular.module('ui-menu', ['ng', 'ui.router']).service('$uiMenu', function($stat
           'ng-click': 'toggle($event.preventDefault())'
         });
         element.append('<ul ui-nav-sub-menu class="nav nav-pills nav-stacked"\nuib-collapse=\'navState[$parent.depth] != item.route\' parent=\'item.route\'></ul>');
-        element.parent().addClass('active');
       }
       element.find('a').attr({
         'ui-sref': scope.item.route

@@ -108,7 +108,6 @@ angular.module 'ui-menu', [
         .attr 'ng-click': 'toggle($event.preventDefault())'
       element.append '''<ul ui-nav-sub-menu class="nav nav-pills nav-stacked"
         uib-collapse='navState[$parent.depth] != item.route' parent='item.route'></ul>'''
-      element.parent().addClass 'active'
     element.find('a').attr 'ui-sref': scope.item.route
     ($compile element.contents())(scope)
     scope.navState = uiNavMenu.navState
