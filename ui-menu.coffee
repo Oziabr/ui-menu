@@ -45,7 +45,6 @@ angular.module 'ui-menu', [
   template: '''
     <li ui-sref-active='active' ng-repeat='item in menu' ui-menu-item></li>
   '''
-  # controller: ($scope) ->
   link: (scope, element, attrs) ->
     tag = attrs.tag || 'nav'
     parent = attrs.parent || ''
@@ -128,5 +127,4 @@ angular.module 'ui-menu', [
     element.find('a').attr 'ui-sref': scope.item.route
     ($compile element.contents())(scope)
     scope.navState = uiNavMenu.navState
-    # console.log element.parent()  if scope.item.route == $state.current.name
     return
