@@ -30,7 +30,7 @@ http://htmlpreview.github.io/?https://github.com/Oziabr/ui-menu/blob/master/exam
 - Coffee!!! (full support)
 - Integrated BDD
 - Coverage reports
-- Stubs for service and directive[TODO] tests
+- Stubs for service and directive tests
 - Live demo
 - [TODO] Live usage info
 - Basic build system
