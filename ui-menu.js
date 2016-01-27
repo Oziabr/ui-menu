@@ -39,11 +39,6 @@ angular.module('ui-menu', ['ng', 'ui.router']).service('$uiMenu', function($stat
     }
     return result;
   };
-  this.find = function(name) {
-    return _.find(menus, {
-      route: name
-    });
-  };
 }).directive('uiMenu', function($uiMenu) {
   return {
     restrict: 'EA',

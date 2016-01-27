@@ -33,8 +33,6 @@ angular.module 'ui-menu', [
     defaultNavItem = result[0].route  if !defaultNavItem && tag == 'nav' && !parent && result.length
     result
 
-  @find = (name) ->
-    _.find menus, route: name
   return
 
 .directive 'uiMenu', ($uiMenu) ->
