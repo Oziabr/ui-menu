@@ -1,5 +1,7 @@
 # ui-router state driven menu directive
 
+[![Build Status](https://travis-ci.org/Oziabr/ui-menu.svg?branch=master)](https://travis-ci.org/Oziabr/ui-menu)
+
 Also made to be a starting point for BDD module development.
 
 With CoffeeScript and coverage reports.

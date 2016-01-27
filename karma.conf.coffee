@@ -40,7 +40,7 @@ module.exports = (config) ->
 
     browsers: ['PhantomJS']
 
-    singleRun: false
+    singleRun: true
 
     coffeeCoverage:
       preprocessor:
