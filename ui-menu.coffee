@@ -17,7 +17,7 @@ angular.module 'ui-menu', [
       .each (el, x, group) ->
         el.children = _.filter group, parent: el.route
         if el.restricted
-          ($state.get el.route).controller = -> $state.go defaultNavItem
+          ($state.get el.route).controller = -> $state.go(defaultNavItem); return
       .value()
 
     result = _ menus[tag]

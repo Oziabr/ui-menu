@@ -21,7 +21,7 @@ angular.module('ui-menu', ['ng', 'ui.router']).service('$uiMenu', function($stat
         });
         if (el.restricted) {
           return ($state.get(el.route)).controller = function() {
-            return $state.go(defaultNavItem);
+            $state.go(defaultNavItem);
           };
         }
       }).value();
