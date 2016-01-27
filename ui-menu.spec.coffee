@@ -34,6 +34,14 @@ describe 'Module: `ui-menu`', ->
       element = compile('<ui-nav-menu></ui-nav-menu>')(scope)
       scope.$digest()
 
+    it 'restricted redirect', ->
+      state.go 'app.tree'
+      timeout.flush()
+      (state.get 'app.tree').controller()
+      scope.$digest()
+      expect state.current.name
+      .toBe 'custom'
+
     it 'state name', ->
       expect state.current.name
       .toBe 'app.one'
