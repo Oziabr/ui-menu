@@ -21,9 +21,9 @@ module.exports = (config) ->
     exclude: []
 
     preprocessors:
-      'ui-menu.coffee':      ["coffee-coverage"]
-      'dummy.coffee':        ["coffee"]
-      'ui-menu.spec.coffee': ["coffee"]
+      'ui-menu.coffee':      ['coffee-coverage']
+      'dummy.coffee':        ['coffee']
+      'ui-menu.spec.coffee': ['coffee']
 
     reporters: [
       'dots'

@@ -7,7 +7,7 @@ angular.module 'ExampleApp', [
 ]
 
 .run ($log, $rootScope, $state) ->
-  $rootScope.$on "$stateChangeError", console.log.bind console
+  $rootScope.$on '$stateChangeError', (console).log.bind console
   window.state = $state
 
 .config ($stateProvider, $urlRouterProvider) ->
@@ -18,7 +18,8 @@ angular.module 'ExampleApp', [
       resolve:
         programmaticalStateExample: ($state) ->
           # adding state programmatically
-          $stateProvider.state 'app.extra', url: '/extra', 'ui-menu': title: 'Extra Nav', icon: 'plus', tag: 'nav', order: 15
+          $stateProvider
+          .state 'app.extra', url: '/extra', 'ui-menu': title: 'Extra Nav', icon: 'plus', tag: 'nav', order: 15
           # changing state programmatically
           ($state.get 'app.home')['ui-menu'].title = 'Hause'
           true
@@ -40,7 +41,6 @@ angular.module 'ExampleApp', [
           </div>
         </div>
       '''
-      controller: ($scope) ->
 
     .state 'app.examples',
       'ui-menu': tag: 'nav',  icon: 'code', title: 'Usage Examples'
@@ -68,7 +68,13 @@ angular.module 'ExampleApp', [
     .state 'app.tabs.details',
       'ui-menu': tag: 'tab', icon: 'list',      title: 'Details Tab',  parent: 'app.tabs'
       url: '/details'
-      template: '''<h1>Some Content</h1><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>'''
+      template: '''<h1>Some Content</h1>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+      standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+      type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+      remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+      Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+      of Lorem Ipsum.</p>'''
 
     .state 'app.nest',
       'ui-menu': tag: 'nav',                     title: 'Nested L0'
@@ -88,7 +94,13 @@ angular.module 'ExampleApp', [
     .state 'app.nest.nest.nest.nest',
       'ui-menu': tag: 'nav',                     title: 'Nested L3',    parent: 'app.nest.nest.nest'
       url: '/l3'
-      template: '''<h4>Nested Head L3</h4><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>'''
+      template: '''<h4>Nested Head L3</h4>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+      standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+      type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+      remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+      Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+      of Lorem Ipsum.</p>'''
 
     .state 'app.examples.coffee',
       'ui-menu': tag: 'nav',  icon: 'coffee',    title: 'CoffeeScript', parent: 'app.examples'

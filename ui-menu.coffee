@@ -26,9 +26,9 @@ angular.module 'ui-menu', [
       .value()
 
     if tag != 'nav' && $state.current.name == parent
-       id = _.findIndex result, 'default'
-       id = 0 if !~id
-       $state.go result[id].route
+      id = _.findIndex result, 'default'
+      id = 0 if !~id
+      $state.go result[id].route
 
     defaultNavItem = result[0].route  if !defaultNavItem && tag == 'nav' && !parent && result.length
     result
